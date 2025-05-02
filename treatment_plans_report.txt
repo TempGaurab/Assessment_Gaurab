@@ -1,0 +1,116 @@
+Treatment Plans Report - 2025-05-02 18:33:32.283342
+================================================================================
+
+Test Case 1
+Symptoms: ['Fever', 'Cough']
+Location: Cincinnati, Ohio
+
+## Treatment Plan: Fever & Cough
+
+**1. Medical Actions:**
+
+*   **Diagnosis:** Rule out common respiratory infections (e.g., influenza, common cold, bronchitis, COVID-19).
+*   **Symptomatic Relief:**
+    *   **Fever:** Acetaminophen (Tylenol) or Ibuprofen (Advil/Motrin) for fever reduction. Follow dosage instructions carefully.
+    *   **Cough:**
+        *   **Hydration:** Drink plenty of fluids (water, tea, broth) to thin mucus.
+        *   **Cough Suppressant (if needed):** Dextromethorphan or Guaifenesin. Consider honey for cough if patient is over 1 year of age.
+    *   **Rest:** Get adequate rest to allow the body to recover.
+*   **Monitoring:** Monitor symptoms for worsening (e.g., shortness of breath, chest pain, high fever not responding to medication). Seek medical attention if symptoms worsen or persist beyond 7 days.
+*   **Asthma Management:** Ensure patient has their prescribed asthma inhaler available and uses it as directed if experiencing asthma symptoms triggered by the respiratory infection.
+
+**2. Location-Specific Options:**
+
+*   **Initial Assessment:** Given "Either" preferred mode of care:
+    *   **Telehealth:** Christ Hospital (1.52 miles). Initial consultation can determine if in-person care is needed.
+    *   **In-Person:** Cincinnati VA Medical Center (2.68 miles) or University of Cincinnati Medical Center (2.76 miles).
+*   **Testing (if needed):** Based on initial assessment, COVID-19 and/or influenza testing can be performed at any of the listed facilities.
+*   **Nearest options for in-person care if telehealth is not preferred:** Cincinnati VA Medical Center (2.68 miles) or University of Cincinnati Medical Center (2.76 miles).
+
+**3. Justifications:**
+
+*   **Fever & Cough:** These are common symptoms of respiratory infections.
+*   **Symptomatic Relief:** Aims to manage discomfort and promote recovery.
+*   **Hydration:** Essential for thinning mucus and aiding expectoration.
+*   **Asthma Management:** The patient's asthma requires close monitoring and proactive management during respiratory illness.
+*   **Hospital Selection:** Prioritizes proximity to the patient's location, especially given "Either" preference of care. Christ Hospital is ideal for possible Telehealth assessment. Cincinnati VA Medical Center and University of Cincinnati Medical Center are closest for In-Person assessment.
+*   **Penicillin Allergy:** Avoid prescribing penicillin-based antibiotics if antibiotics are deemed necessary after assessment.
+--------------------------------------------------------------------------------
+
+Test Case 2
+Symptoms: ['Headache', 'Blurred vision']
+Location: Cleveland, Ohio
+
+## Treatment Plan
+
+**1. Medical Actions:**
+
+*   **Initial Assessment:** Comprehensive eye exam and blood pressure check.
+*   **Differential Diagnosis:** Rule out medication side effects (related to hypertension), post-operative complications from eye surgery, angle closure glaucoma, or neurological causes.
+*   **Diagnostic Testing:** Consider blood tests (complete blood count, comprehensive metabolic panel) and neurological examination if initial assessment is inconclusive.
+*   **Symptomatic Relief:**
+    *   If headache is mild, recommend over-the-counter pain relievers (acetaminophen or ibuprofen, considering hypertension).
+    *   Address dizziness with appropriate measures after cause is determined (e.g., vestibular rehabilitation if balance-related).
+*   **Blood Pressure Management:** Ensure hypertension is well-controlled; adjust medication as needed following evaluation.
+*   **Follow-Up:** Schedule follow-up appointment based on initial assessment and test results.
+*   **Vaccination:** Assess and update incomplete immunization status based on CDC guidelines and patient's needs.
+
+**2. Location-Specific Options:**
+
+*   **Recommended Facility:** Cleveland Clinic (Distance: 3.83 miles, Services Offered: Either).
+    *   Offers both in-person and telehealth options, allowing for flexibility.
+    *   Relatively close proximity to the patient's location.
+*   **Alternative Facility:** Mount Carmel East (Distance: 120.44 miles, Services Offered: In person).
+    *   This location is further but still a reasonable drive and has in-person care available.
+
+**3. Justifications:**
+
+*   **Headache and Blurred Vision:** Require thorough evaluation to identify underlying cause (ophthalmological, neurological, or systemic). Recent eye surgery and hypertension are important risk factors.
+*   **Cleveland Clinic Recommendation:** Proximity minimizes travel burden. "Either" option for services allows flexibility based on the specialist's preference for the most appropriate examination method.
+*   **Blood Pressure Monitoring:** Essential to manage hypertension, which can contribute to headache and visual disturbances. Also important in the context of medication considerations.
+*   **Immunization Status:** Updating incomplete immunizations protects against preventable illnesses and is part of comprehensive healthcare.
+--------------------------------------------------------------------------------
+
+Test Case 3
+Symptoms: ['Joint pain', 'Swelling']
+Location: Columbus, Ohio
+
+## Treatment Plan
+
+**1. Medical Actions:**
+
+*   **Diagnosis:** Evaluate for causes of joint pain and swelling, considering osteoarthritis (exacerbated by recent knee replacement and existing arthritis), infection, or other inflammatory conditions. Rule out gout and pseudogout.
+
+*   **Medication:**
+    *   **Pain Management:** Acetaminophen (avoiding NSAIDs due to potential interactions and diabetic kidney concerns). Topical analgesics (e.g., capsaicin cream) may be helpful.
+    *   **Inflammation Management:** Consider intra-articular corticosteroid injection if pain is severe and localized (after ruling out infection). Discuss risks and benefits.
+    *   **Diabetes Management Review:** Ensure optimal blood sugar control, as this can impact inflammation and healing. Review current insulin regimen.
+
+*   **Physical Therapy:** Initiate a physical therapy program to improve range of motion, strength, and joint stability. Focus on exercises that are appropriate post-knee replacement and consider mobility issues.
+
+*   **Lifestyle Modifications:**
+    *   Weight management (if applicable).
+    *   Low-impact exercise (e.g., walking, swimming).
+    *   Dietary modifications to reduce inflammation (e.g., Mediterranean diet).
+
+*   **Monitoring:**
+    *   Monitor blood glucose levels regularly.
+    *   Follow up with physician in 1-2 weeks to assess pain and swelling.
+    *   Monitor for any signs of infection (especially around the knee replacement).
+
+**2. Location-Specific Options:**
+
+*   **Telehealth Option:** Christ Hospital (Cincinnati, OH) offers telehealth and is within reasonable proximity if in-person follow-up is needed. Consider this for initial consultation and medication management review.
+*   **In-Person Option:** Mount Carmel East (Columbus, OH) is the closest hospital and provides in-person services if a physical examination or intra-articular injection is deemed necessary.
+
+**3. Justifications:**
+
+*   **Acetaminophen:** First-line pain reliever, preferred due to sulfa allergy and potential risks of NSAIDs with diabetes.
+*   **Topical Analgesics:** Non-systemic option for localized pain relief.
+*   **Intra-articular Corticosteroid Injection:** Can provide rapid pain relief if localized and other measures fail. Requires careful consideration due to potential risks and benefits.
+*   **Physical Therapy:** Crucial for restoring function and preventing further joint damage.
+*   **Diabetes Management:** Optimal glucose control is essential for healing and reducing inflammation.
+*   **Telehealth First:** Convenient for initial assessment and medication review, minimizing travel burden.
+*   **Local Hospital Consideration:** Mount Carmel East is the closest option for in-person care, should it be needed.
+--------------------------------------------------------------------------------
+

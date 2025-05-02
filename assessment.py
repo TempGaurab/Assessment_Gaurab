@@ -6,7 +6,7 @@ from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
 class TreatmentPlanAssistant:
-    def __init__(self): #All of this is intializing stuff
+    def __init__(self):  # Initializing variables and loading the environment
         load_dotenv()
         self.api_key = os.getenv('Gemini_Api_Key')
         self.client = genai.Client(api_key=self.api_key)
@@ -47,55 +47,72 @@ class TreatmentPlanAssistant:
             },
         ]
 
-    def get_city_coordinates(self, city, state): #this is the library that helps use get latitude and longitude of the user input
-        geolocator = Nominatim(user_agent="treatment-plan-assistant")
-        location = geolocator.geocode(f"{city}, {state}, United States")
-        if location:
-            return (location.latitude, location.longitude)
-        else:
-            raise ValueError("Could not find coordinates for the provided location.")
+    def get_city_coordinates(self, city, state):
+        """Get latitude and longitude of the city"""
+        try:
+            geolocator = Nominatim(user_agent="treatment-plan-assistant")
+            location = geolocator.geocode(f"{city}, {state}, United States")
+            if location:
+                return (location.latitude, location.longitude)
+            else:
+                raise ValueError(f"Could not find coordinates for {city}, {state}.")
+        except Exception as e:
+            print(f"Error fetching coordinates: {e}")
+            raise
 
-    def collect_inputs(self): # this collect input is collecting all details of the user
-        self.symptoms = [s.strip() for s in input("Enter patient symptoms (comma separated): ").split(",") if s.strip()]
-        age = input("Enter patient age: ")
-        mobility = input("Describe mobility issues: ")
-        allergies = [a.strip() for a in input("List known allergies (comma separated): ").split(",") if a.strip()]
-        conditions = [c.strip() for c in input("List chronic conditions (comma separated): ").split(",") if c.strip()]
-        surgeries = input("Recent surgeries (if any): ")
-        immunization = input("Immunization status: ")
-        other_notes = input("Any other notes: ")
-        city = input("City: ")
-        state = input("State: ")
-        mode_of_care = input("Preferred mode of care (In person / Telehealth / Either): ")
+    def collect_inputs(self):
+        """Collect user inputs for patient condition and location"""
+        try:
+            self.symptoms = [s.strip() for s in input("Enter patient symptoms (comma separated): ").split(",") if s.strip()]
+            age = input("Enter patient age: ")
+            mobility = input("Describe mobility issues: ")
+            allergies = [a.strip() for a in input("List known allergies (comma separated): ").split(",") if a.strip()]
+            conditions = [c.strip() for c in input("List chronic conditions (comma separated): ").split(",") if c.strip()]
+            surgeries = input("Recent surgeries (if any): ")
+            immunization = input("Immunization status: ")
+            other_notes = input("Any other notes: ")
+            city = input("City: ")
+            state = input("State: ")
+            mode_of_care = input("Preferred mode of care (In person / Telehealth / Either): ")
 
-        self.patient_coords = self.get_city_coordinates(city, state)
+            self.patient_coords = self.get_city_coordinates(city, state)
 
-        self.patient_condition = {
-            "Age": age,
-            "Mobility Issues": mobility,
-            "Known Allergies": allergies,
-            "Chronic Conditions": conditions,
-            "Recent Surgeries": surgeries,
-            "Immunization Status": immunization,
-            "Other Notes": other_notes
-        }
+            self.patient_condition = {
+                "Age": age,
+                "Mobility Issues": mobility,
+                "Known Allergies": allergies,
+                "Chronic Conditions": conditions,
+                "Recent Surgeries": surgeries,
+                "Immunization Status": immunization,
+                "Other Notes": other_notes
+            }
 
-        self.geographic_location = {
-            "Country": "United States",
-            "State": state,
-            "City": city,
-            "Preferred Mode of Care": mode_of_care
-        }
+            self.geographic_location = {
+                "Country": "United States",
+                "State": state,
+                "City": city,
+                "Preferred Mode of Care": mode_of_care
+            }
 
-        self.add_hospital_distances()
+            self.add_hospital_distances()
 
-    def add_hospital_distances(self): #this code is adding the distance of the hopitals with the hopsital data
-        for hospital in self.hospital_data:
-            hosp_coords = (hospital["Latitude"], hospital["Longitude"])
-            distance = geodesic(self.patient_coords, hosp_coords).miles
-            hospital["Distance (miles)"] = round(distance, 2)
+        except Exception as e:
+            print(f"Error collecting input: {e}")
+            raise
 
-    def generate_prompt(self): #prompt
+    def add_hospital_distances(self):
+        """Calculate the distance from patient location to hospitals"""
+        try:
+            for hospital in self.hospital_data:
+                hosp_coords = (hospital["Latitude"], hospital["Longitude"])
+                distance = geodesic(self.patient_coords, hosp_coords).miles
+                hospital["Distance (miles)"] = round(distance, 2)
+        except Exception as e:
+            print(f"Error calculating hospital distances: {e}")
+            raise
+
+    def generate_prompt(self):
+        """Generate a prompt for AI treatment plan"""
         return f"""
             You are a healthcare AI assistant tasked with generating a customized treatment plan for a patient. Given the following inputs:
 
@@ -113,15 +130,21 @@ class TreatmentPlanAssistant:
             Be concise, medically accurate, and context-aware. Avoid unnecessary medical jargon. Just provide the plan.
             """
 
-    def generate_plan(self): #main funciton that calls the bot
-        prompt = self.generate_prompt()
-        print("Generating plan.......")
-        response = self.client.models.generate_content(
-            model="gemini-2.0-flash", contents=prompt
-        )
-        return response.text
+    def generate_plan(self):
+        """Generate the treatment plan by calling AI model"""
+        try:
+            prompt = self.generate_prompt()
+            print("Generating plan.......")
+            response = self.client.models.generate_content(
+                model="gemini-2.0-flash", contents=prompt
+            )
+            return response.text
+        except Exception as e:
+            print(f"Error generating treatment plan: {e}")
+            raise
 
-    def display_plan(self, text): #displays the output of the code
+    def display_plan(self, text):
+        """Display the generated treatment plan"""
         print("\n===== Customized Treatment Plan =====\n")
         sections = text.strip().split('\n\n')
         for section in sections:
@@ -129,9 +152,12 @@ class TreatmentPlanAssistant:
                 print(section)
                 print("-" * 60)
 
-if __name__ == "__main__": #call the program in our code
-    print("Starting program")
-    assistant = TreatmentPlanAssistant()
-    assistant.collect_inputs()
-    plan = assistant.generate_plan()
-    assistant.display_plan(plan)
+if __name__ == "__main__":  # Running the program
+    try:
+        print("Starting program")
+        assistant = TreatmentPlanAssistant()
+        assistant.collect_inputs()
+        plan = assistant.generate_plan()
+        assistant.display_plan(plan)
+    except Exception as e:
+        print(f"An error occurred during execution: {e}")
